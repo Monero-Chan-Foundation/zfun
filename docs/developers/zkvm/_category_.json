@@ -1,0 +1,8 @@
+{
+  "label": "zkVM Internals",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "zkvm/overview"
+  }
+}

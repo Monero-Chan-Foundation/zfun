@@ -1,0 +1,50 @@
+[workspace]
+members = ["crates/*"]
+exclude = ["crates/program", "crates/query-orchard", "crates/logs"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+
+[workspace.dependencies]
+# Pin Zebra versions to 2.0.0 to match local librustzcash
+zebra-chain = "=2.0.0"
+zebra-state = "=2.0.0"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.release]
+debug = true
+
+[patch.crates-io]
+# rusqlite = { git = "https://github.com/zdotfun/rusqlite", branch = "patch" }
+rusqlite = { path = "../rusqlite" }
+# shardtree = { git = "https://github.com/zdotfun/incrementalmerkletree", branch = "patch" }
+# incrementalmerkletree = { git = "https://github.com/zdotfun/incrementalmerkletree", branch = "patch" }
+shardtree = { path = "vendor/incrementalmerkletree/shardtree" }
+incrementalmerkletree = { path = "vendor/incrementalmerkletree/incrementalmerkletree" }
+zcash_client_sqlite = { path = "../librustzcash/zcash_client_sqlite" }
+zcash_client_backend = { path = "../librustzcash/zcash_client_backend" }
+# zcash_primitives = { git = "https://github.com/zcash/librustzcash", tag = "zcash_primitives-0.13.0" }
+# Using local path patch - works with Zebra 2.0.x
+zcash_primitives = { path = "../librustzcash/zcash_primitives" }
+zcash_protocol = { path = "../librustzcash/components/zcash_protocol" }
+zcash_keys = { path = "../librustzcash/zcash_keys" }
+zcash_transparent = { path = "../librustzcash/zcash_transparent" }
+
+# Patch monerochan packages to use local 5.2.13 version (not yet published)
+monerochan = { path = "../monerochanrs-private/crates/sdk" }
+monerochan-build = { path = "../monerochanrs-private/crates/build" }
+monerochan-runtime = { path = "../monerochanrs-private/crates/zkvm/entrypoint" }
+
+# NOTE: Using Zebra 2.0.x instead of 3.0.0 to avoid dependency conflicts
+# Zebra 2.0.x works with the local path patches above and doesn't require
+# the reorganized zcash_protocol/zcash_primitives split that Zebra 3.0.0 expects.

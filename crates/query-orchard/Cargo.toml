@@ -1,0 +1,18 @@
+[package]
+name = "query-orchard"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "query-orchard"
+path = "src/main.rs"
+
+[dependencies]
+zebra-state = "3.0.0"
+zebra-chain = "3.0.0"
+hex = "0.4"
+eyre = "0.6.12"
+
+[patch.crates-io]
+# Match the workspace patches if needed
+

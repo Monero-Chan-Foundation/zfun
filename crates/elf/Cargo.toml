@@ -1,0 +1,11 @@
+[package]
+name = "zfun-elf"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+monerochan = { path = "../../../monerochanrs-private/crates/sdk" }
+zfun-program = { path = "../program" }
+
+[build-dependencies]
+monerochan-build = { path = "../../../monerochanrs-private/crates/build" }

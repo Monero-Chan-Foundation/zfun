@@ -1,0 +1,13 @@
+{
+  "name": "zfun",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "cd frontend && bun run dev",
+    "build": "cd frontend && bun run build",
+    "lint": "cd frontend && bun run lint",
+    "start": "cd frontend && bun run start",
+    "build:wasm": "cd frontend && bun run build:wasm"
+  },
+  "packageManager": "bun@1.3.1"
+}

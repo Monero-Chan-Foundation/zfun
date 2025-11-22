@@ -1,0 +1,74 @@
+[package]
+name = "shard-builder"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "shard_builder"
+path = "bin/shard_builder.rs"
+
+[[bin]]
+name = "snapshot_verify"
+path = "bin/snapshot_verify.rs"
+
+[[bin]]
+name = "snapshot_build"
+path = "bin/snapshot_build.rs"
+
+[dependencies]
+eyre = "0.6.12"
+orchard = "0.11.0"
+sapling = { package = "sapling-crypto", version = "0.5.0" }
+incrementalmerkletree = "0.8.2"
+clap = { version = "4.5", features = ["derive"] }
+memmap2 = "0.9"
+hex = "0.4.3"
+sha2 = "0.10.9"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+blake2b_simd = "1.0.3"
+chrono = { version = "0.4", features = ["serde"] }
+ff = "0.13"  # For PrimeField trait (to_repr)
+pasta_curves = "0.5"  # For pallas::Base type
+semver = "1.0"  # For Version in ZebraDb::new()
+lru = "0.12"
+log = "0.4"
+crossbeam-channel = "0.5"
+crossbeam-queue = "0.3"
+rayon = "1.8"
+ahash = "0.8"
+once_cell = "1.19"
+lazy_static = "1.4"
+parking_lot = "0.12"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+jemallocator = "0.5"
+
+[features]
+default = []
+# Features gated with compile_error! until adapters are implemented
+zebra = ["zebra-chain", "zebra-state"]
+wallet-db = []
+
+[dependencies.zebra-chain]
+workspace = true
+optional = true
+
+[dependencies.zebra-state]
+workspace = true
+optional = true
+
+# Wallet DB adapter dependency removed - feature gated with compile_error!
+# When implementing, add: zcash-client-sqlite = { package = "zcash_client_sqlite", version = "0.13", optional = true }
+
+# NOTE: Using Zebra 2.0.x (not 3.0.0) to avoid dependency conflicts
+# Zebra 2.0.x works with the workspace's local path patches.
+# 
+# The zebra feature is implemented and can be used with --features zebra.
+# See IMPLEMENTATION_GUIDE.md for implementation details.
+
+[dev-dependencies]
+tempfile = "3.10"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_vendor, values("monerochan"))'] }

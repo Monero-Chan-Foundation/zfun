@@ -1,0 +1,34 @@
+[package]
+name = "zfun-server"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+axum = { version = "0.8.6", features = ["macros"] }
+tonic = "0.12.3"
+base64 = "0.22"
+bincode = "1.3"
+clap = { version = "4.5", features = ["derive"] }
+eyre = "0.6"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+monerochan = { path = "../../../monerochanrs-private/crates/sdk", features = ["network"] }
+monerochan-runtime = { path = "../../../monerochanrs-private/crates/zkvm/entrypoint" }
+thiserror = "1.0"
+tokio = { version = "1.44", features = ["macros", "rt-multi-thread", "signal"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "registry"] }
+tracing-appender = "0.2"
+rustls = "0.23.33"
+zfun-elf = { path = "../elf" }
+zfun-lib = { path = "../lib" }
+prost = "0.13.5"
+hex = "0.4.3"
+tower-http = { version = "0.6.6", default-features = false, features = ["cors", "trace", "compression-gzip", "compression-br", "compression-zstd", "compression-deflate"] }
+reqwest = "0.12.24"
+rusqlite = { version = "0.37.0", features = ["bundled"] }
+bs58 = "0.5"
+chrono = "0.4"
+ed25519-dalek = { version = "2.1", features = ["std"] }
+dotenv = "0.15"
+sha2 = "0.10"

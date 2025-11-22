@@ -1,0 +1,43 @@
+[package]
+name = "zfun-wasm"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.104"
+getrandom = { version = "0.3", features = ["wasm_js"] }
+js-sys = "0.3.81"
+web-sys = { version = "0.3.81", features = ["Window", "Document", "console", "Request", "RequestInit", "RequestMode", "Response", "Headers"] }
+zfun-lib = { path = "../lib", default-features = false }
+rusqlite = { version = "0.37.0", features = ["bundled", "serialize"] }
+zcash_client_backend = { version = "0.21.0" }
+zcash_client_sqlite = { version = "0.19.0", features = ["orchard"] }
+uuid = { version = "1.18.1", features = ["js"] }
+zfun-host-lib = { path = "../host-lib" }
+serde-wasm-bindgen = "0.6.5"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.117"
+reqwest = { version = "0.12.24", features = ["json"] }
+monerochan-stark = { version = "5.2.12" }
+bincode = "1.3.3"
+wasm-bindgen-futures = "0.4.54"
+console_log = "1.0.0"
+log = "0.4.28"
+hex = "0.4.3"
+base64 = "0.22"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_vendor, values("monerochan"))'] }
+
+[features]
+wasm = []
+
+[package.metadata.wasm-pack.profile.release.wasm-bindgen]
+dwarf-debug-info = true
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+dwarf-debug-info = true

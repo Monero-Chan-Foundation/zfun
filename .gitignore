@@ -1,0 +1,115 @@
+# Rust/Cargo
+target/
+**/target/
+Cargo.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+frontend/.env.local
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+proof_requests.db
+
+# Exception: include test wallet databases
+!test-wallets/*.db
+!test-wallets/*.db-shm
+!test-wallets/*.db-wal
+
+# Data directories
+data/
+data2/
+final_snapshot/
+
+# Zebra configuration (environment-specific paths)
+zebrad.toml
+
+# Snapshot metadata (generated from snapshots)
+snapshot_metadata.json
+snapshot_metadata.json.backup.*
+
+# Snapshot outputs (but not docs/developers/snapshots/)
+/snapshots/
+
+# Logs
+logs/
+*.log
+
+# Build artifacts
+tree.txt
+*.bin
+proof.bin
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.wasm-target/
+frontend/.wasm-pack-cache/
+frontend/.next/
+frontend/.vercel/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# LaTeX build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.log
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.sout
+*.auxlock
+*.figlist
+*.makefile
+*.xdy
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.loa
+*.lol
+*.maf
+*.mtc*
+*.nlo
+*.nls
+*.slg
+*.syg
+*.syi
+*.syt
+*.tdo
+*.xdv
+.zfun-server.pid
+
+frontend/pkg

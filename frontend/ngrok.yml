@@ -1,0 +1,9 @@
+version: "2"
+authtoken: # Add your ngrok authtoken here: ngrok config add-authtoken YOUR_TOKEN
+tunnels:
+  frontend:
+    addr: 3001
+    proto: http
+    bind_tls: true
+    inspect: true
+

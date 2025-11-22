@@ -1,0 +1,27 @@
+[package]
+name = "zfun-setup-script"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "zfun-setup-script"
+path = "src/main.rs"
+
+[dependencies]
+eyre = "0.6.12"
+flume = "0.11"
+rusqlite = "0.37.0"
+monerochan = { path = "../../../monerochanrs-private/crates/sdk", features = ["network"] }
+zfun-lib = { path = "../lib" }
+reqwest = "0.12.24"
+serde_json = "1.0.145"
+tokio = { version = "1.44", features = ["macros", "rt-multi-thread"] }
+serde = { version = "1.0.228", features = ["derive"] }
+async-rate-limiter = "1.1.0"
+hex = "0.4"
+rand = "0.9.2"
+zebra-state = { workspace = true }
+zebra-chain = { workspace = true }
+sha2 = "0.10.9"
+zcash_primitives = "=0.26"
+futures = "0.3.31"

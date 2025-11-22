@@ -1,0 +1,22 @@
+[package]
+name = "zfun-program"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+monerochan-runtime = { version = "5.2.12" }
+zfun-lib = { path = "../lib" }
+
+[patch.crates-io]
+k256 = { git = "https://github.com/monerochanorg/elliptic-curves", tag = "patch-k256-13.4-monerochanrs-5.0.0" }
+sha2-v0-10-9 = { git = "https://github.com/monerochanorg/RustCrypto-hashes", package = "sha2", tag = "patch-sha2-0.10.9-monerochanrs-4.0.0" }
+secp256k1 = { git = "https://github.com/monerochanorg/rust-secp256k1", tag = "patch-0.29.1-monerochanrs-5.0.0" }
+shardtree = { path = "../../vendor/incrementalmerkletree/shardtree" }
+incrementalmerkletree = { path = "../../vendor/incrementalmerkletree/incrementalmerkletree" }
+zcash_client_sqlite = { path = "../../../librustzcash/zcash_client_sqlite" }
+zcash_client_backend = { path = "../../../librustzcash/zcash_client_backend" }
+# zcash_primitives = { git = "https://github.com/zcash/librustzcash", tag = "zcash_primitives-0.13.0" }
+zcash_primitives = { path = "../../../librustzcash/zcash_primitives" }
+zcash_protocol = { path = "../../../librustzcash/components/zcash_protocol" }
+zcash_keys = { path = "../../../librustzcash/zcash_keys" }
+zcash_transparent = { path = "../../../librustzcash/zcash_transparent" }

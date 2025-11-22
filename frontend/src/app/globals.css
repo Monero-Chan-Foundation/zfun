@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f0e4;
+  --foreground: #1f3326;
+}
+
+html {
+  height: 100%;
+  overscroll-behavior-y: none;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-size-xs-responsive: 0.6vw;
+  --font-size-sm-responsive: 0.75vw;
+  --font-size-base-responsive: 0.9vw;
+  --font-size-lg-responsive: 1vw;
+  --font-size-xl-responsive: 1.2vw;
+  --font-size-2xl-responsive: 1.5vw;
+  --font-size-3xl-responsive: 1.8vw;
+  --font-size-4xl-responsive: 2.2vw;
+  --font-size-5xl-responsive: 2.6vw;
+  --font-size-6xl-responsive: 3vw;
+  --font-size-7xl-responsive: 3.5vw;
+  --font-size-8xl-responsive: 4vw;
+  --font-size-9xl-responsive: 5vw;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d1b14;
+    --foreground: #e6eddc;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+
+/* Global button radius: 4px for all native buttons */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  border-radius: 4px !important;
+  cursor: pointer;
+}
+
+
+@utility text-glow {
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+@utility text-paragraph {
+  font-size: clamp(13px, 0.9vw, 0.9vw);
+}
+
+@utility small-title {
+  font-size: clamp(40px,2.85vw,2.85vw);
+}
+
+@utility text-xs-responsive {
+  font-size: var(--font-size-xs-responsive);
+}
+
+@utility text-sm-responsive {
+  font-size: var(--font-size-sm-responsive);
+}
+
+@utility text-base-responsive {
+  font-size: var(--font-size-base-responsive);
+}
+
+@utility text-lg-responsive {
+  font-size: var(--font-size-lg-responsive);
+}
+
+@utility text-xl-responsive {
+  font-size: var(--font-size-xl-responsive);
+}
+
+@utility text-2xl-responsive {
+  font-size: var(--font-size-2xl-responsive);
+}
+
+@utility text-3xl-responsive {
+  font-size: var(--font-size-3xl-responsive);
+}
+
+@utility text-4xl-responsive {
+  font-size: var(--font-size-4xl-responsive);
+}
+
+@utility text-5xl-responsive {
+  font-size: var(--font-size-5xl-responsive);
+}
+
+@utility text-6xl-responsive {
+  font-size: var(--font-size-6xl-responsive);
+}
+
+@utility text-7xl-responsive {
+  font-size: var(--font-size-7xl-responsive);
+}
+
+@utility text-8xl-responsive {
+  font-size: var(--font-size-8xl-responsive);
+}
+
+@utility text-9xl-responsive {
+  font-size: var(--font-size-9xl-responsive);
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-block {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 600ms ease, transform 700ms ease;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.section-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-block {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Custom Range Slider Styles */
+input[type="range"].custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f3b724;
+  cursor: pointer;
+  border: 2px solid #1a1a1a;
+  box-shadow: 0 0 0 1px rgba(243, 183, 36, 0.3);
+}
+
+input[type="range"].custom-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f3b724;
+  cursor: pointer;
+  border: 2px solid #1a1a1a;
+  box-shadow: 0 0 0 1px rgba(243, 183, 36, 0.3);
+}
+
+input[type="range"].custom-slider::-webkit-slider-thumb:hover {
+  background: #ffc640;
+  box-shadow: 0 0 0 2px rgba(243, 183, 36, 0.5);
+}
+
+input[type="range"].custom-slider::-moz-range-thumb:hover {
+  background: #ffc640;
+  box-shadow: 0 0 0 2px rgba(243, 183, 36, 0.5);
+}
+
+/* Prevent SVG selection and outline */
+.chart-no-select svg,
+.chart-no-select svg * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.chart-no-select svg:focus,
+.chart-no-select svg:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
